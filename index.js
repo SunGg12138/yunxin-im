@@ -13,6 +13,8 @@ class YunxinIM {
     this._baseUrl = 'https://api.netease.im/nimserver/';
   }
 
+  // 获取请求的headers
+  // 文档：http://dev.yunxin.163.com/docs/product/IM即时通讯/服务端API文档/接口概述
   getHeaders () {
     let Nonce = this.spawnNonce();
     let CurTime = Math.round(new Date().getTime() / 1000);
@@ -25,6 +27,7 @@ class YunxinIM {
     };
   }
 
+  // 生成请求的headers的Nonce
   spawnNonce (length = this._defaultNonceLength) {
     let result = '';
     for (let i = 0; i < length; i++) {
@@ -34,13 +37,19 @@ class YunxinIM {
     return result;
   }
 
+  // sha1加密字符串
   sha1 (str) {
     let sha1 = crypto.createHash('sha1');
     sha1.update(str);
     return sha1.digest('hex');
   }
 
-  exec (cmd, data) {
+  /**
+   * 执行请求
+   * @param {String} cmd 请求的命令
+   * @param {Object} data 请求的数据
+   */
+  exec (cmd, data = {}) {
     return rp({
       method: 'POST',
       url: this._baseUrl + cmd,
