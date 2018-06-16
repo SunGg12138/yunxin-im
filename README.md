@@ -3,7 +3,7 @@
 ## 安装
 
 ```bash
-$ npm install yunxin-im
+$ npm install node-yunxin-im
 ```
 
 ## 使用
