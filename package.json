@@ -1,5 +1,5 @@
 {
-  "name": "yunxin-im",
+  "name": "node-yunxin-im",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,7 +10,7 @@
     "yunxin",
     "yunxinim",
     "yunxinIM",
-    "yunxin-im",
+    "node-yunxin-im",
     "云信IM",
     "云信im",
     "IM",
@@ -28,12 +28,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SunGg12138/yunxin-im.git"
+    "url": "git+https://github.com/SunGg12138/node-yunxin-im.git"
   },
   "author": "sungg12138",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SunGg12138/yunxin-im/issues"
+    "url": "https://github.com/SunGg12138/node-yunxin-im/issues"
   },
-  "homepage": "https://github.com/SunGg12138/yunxin-im#readme"
+  "homepage": "https://github.com/SunGg12138/node-yunxin-im#readme"
 }

@@ -9,7 +9,7 @@ $ npm install yunxin-im
 ## 使用
 
 ```javascript
-const YunxinIM = require('yunxin-im');
+const YunxinIM = require('node-yunxin-im');
 const yunxinIM = new YunxinIM('<你的AppKey>', '<你的AppSecret>');
 
 // 返回的是Promise
