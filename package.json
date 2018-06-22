@@ -16,8 +16,8 @@
     "IM",
     "im"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "sungg12138",
+  "license": "MIT",
   "dependencies": {
     "request": "^2.87.0",
     "request-promise": "^4.2.2"
@@ -30,8 +30,6 @@
     "type": "git",
     "url": "git+https://github.com/SunGg12138/node-yunxin-im.git"
   },
-  "author": "sungg12138",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/SunGg12138/node-yunxin-im/issues"
   },
