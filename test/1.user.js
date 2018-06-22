@@ -2,7 +2,7 @@ const debug = require('debug')('test');
 const expect = require('chai').expect;
 const test_config = require('./config');
 const YunxinIM = require('../index');
-const yunxinIM = new YunxinIM('118acf7269bc0e3b890781c65e385f28', '3abf9884a82c');
+const yunxinIM = new YunxinIM('<你的AppKey>', '<你的AppSecret>');
 
 describe('1.用户部分', function(){
   it('创建网易云通信ID', function(done){

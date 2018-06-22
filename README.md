@@ -12,13 +12,37 @@ $ npm install node-yunxin-im
 const YunxinIM = require('node-yunxin-im');
 const yunxinIM = new YunxinIM('<你的AppKey>', '<你的AppSecret>');
 
-// 返回的是Promise
-// 具体的接口和参数：http://dev.yunxin.163.com/docs/product/IM即时通讯/新手接入指南
-// 链接页面 > 服务端API文档
-yunxinIM.exec('user/create.action', {
-  accid: accid,
+// 创建用户
+await yunxinIM.exec('user/create.action', {
+  accid: 'accid',
   donnopOpen: false
 });
+
+// 创建群
+await yunxinIM.exec('team/create.action', {
+  tname: 'tname',
+  owner: 'accid',
+  members: JSON.stringify([]),
+  msg: '邀请你来群',
+  magree: 0,
+  joinmode: 0
+});
+
+// path为/nimserver/的直接使用简化的命令就可以了
+// path不为/nimserver/的需要指明全路径
+// 例如: sms
+await yunxinIM.exec('https://api.netease.im/sms/sendcode.action', {
+  mobile: 'xxxxxxxxxxxx'
+});
+```
+[详细文档](./docs)
+
+## 测试
+
+```bash
+# 因为接口都相似，我只拿用户部分的接口作了测试
+# 需要在test/1.user.js配置你的AppKey，AppSecret
+$ mocha
 ```
 
 ## 错误码快查

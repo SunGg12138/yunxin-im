@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const rp = require('request-promise');
-const numbers = '0123456789',
+const url_reg = /^http[s]{0,1}:\/\//,
+      numbers = '0123456789',
       low_letter = 'abcdefghigklmnopqrstuvwxyz',
       up_letter = low_letter.toLocaleUpperCase(),
       chars = numbers + low_letter + up_letter;
@@ -46,13 +47,14 @@ class YunxinIM {
 
   /**
    * 执行请求
-   * @param {String} cmd 请求的命令
+   * @param {String} cmd 请求的命令或者是url
    * @param {Object} data 请求的数据
    */
   exec (cmd, data = {}) {
+    let url = url_reg.test(cmd)? cmd : this._baseUrl + cmd;
     return rp({
       method: 'POST',
-      url: this._baseUrl + cmd,
+      url: url,
       form: data,
       json: true,
       headers: this.getHeaders()
