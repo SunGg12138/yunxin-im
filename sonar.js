@@ -29,7 +29,7 @@ const options = {
   // Encoding of the source code. Default is default system encoding
   'sonar.sourceEncoding': 'UTF-8',
 
-  'analysis.mode': 'incremental',
+  // 'analysis.mode': 'incremental',
 };
 
 // parameters for sonarqube-scanner

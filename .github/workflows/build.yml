@@ -14,7 +14,7 @@ env: # 统一设置环境变量
 name: SonarQube Scan
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: sonarsource/sonar-scanner-cli
     steps:
       - uses: actions/checkout@v3
       - name: setup node
