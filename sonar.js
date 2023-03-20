@@ -27,7 +27,9 @@ const options = {
   'sonar.javascript.lcov.reportPaths' : 'coverage/lcov.info',
 
   // Encoding of the source code. Default is default system encoding
-  'sonar.sourceEncoding': 'UTF-8'
+  'sonar.sourceEncoding': 'UTF-8',
+
+  'analysis.mode': 'incremental',
 };
 
 // parameters for sonarqube-scanner
