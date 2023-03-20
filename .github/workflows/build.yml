@@ -21,7 +21,7 @@ jobs:
     - name: SonarQube Scan
       uses: kitabisa/sonarqube-action@master
       with:
-        host: ${{ secrets.SONARQUBE_HOST }}
-        login: ${{ secrets.SONARQUBE_TOKEN }}
+        host: ${{ secrets.SONAR_HOST_URL }}
+        login: ${{ secrets.SONAR_TOKEN }}
         projectBaseDir: "/"
         projectKey: "yunxin"
