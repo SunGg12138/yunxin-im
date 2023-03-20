@@ -6,15 +6,15 @@ on:
       types: [opened, synchronize, reopened]
 
 env: # 统一设置环境变量
-  GIT_USER: git
-  GIT_EMAIL: email@example.com
-  THEME_REPO: git/next
-  DEPLOY_REPO: git/gagahappy.github.io
+  SONARQUBE_URL: https://5940cq2570.zicp.fun
+  SONARQUBE_TOKEN: sqp_453bf394a4488de07719330b0b1ab5b3b13b5e42
+  SONARQUBE_PROJECTKEY: pigeon
+  SONARQUBE_PROJECTNAME: pigeon
 
 name: SonarQube Scan
 jobs:
   build:
-    runs-on: sonarsource/sonar-scanner-cli
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: setup node
@@ -24,4 +24,4 @@ jobs:
       - name: npm install
         run: npm install sonarqube-scanner
       - name: SonarQube Scan
-        run: npm run sonar
+        run: npm run sonarqube
