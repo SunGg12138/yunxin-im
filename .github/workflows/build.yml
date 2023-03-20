@@ -23,4 +23,4 @@ jobs:
           node-version: 14.17.3
       - run: npm install sonarqube-scanner
       - name: SonarQube Scan
-      - run: node sonar.js
+        run: node sonar.js
