@@ -1,25 +1,26 @@
 on:
-  # Trigger analysis when pushing in master or pull requests, and when creating
-  # a pull request. 
   push:
     branches:
       - master
   pull_request:
       types: [opened, synchronize, reopened]
 
+env: # 统一设置环境变量
+  GIT_USER: git
+  GIT_EMAIL: email@example.com
+  THEME_REPO: git/next
+  DEPLOY_REPO: git/gagahappy.github.io
+
 name: SonarQube Scan
 jobs:
-  sonarqube:
-    name: SonarQube Trigger
+  build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checking out
-      uses: actions/checkout@master
-      with:
-        # Disabling shallow clone is recommended for improving relevancy of reporting
-        fetch-depth: 0
-    - name: SonarQube Scan
-      uses: kitabisa/sonarqube-action@master
-      with:
-        host: ${{ secrets.SONAR_HOST_URL }}
-        login: ${{ secrets.SONAR_TOKEN }}
+      - name: setup-node
+        uses: actions/checkout@v3
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14.17.3
+        run: npm install sonarqube-scanner
+      - name: SonarQube Scan
+        run: node sonar.js
