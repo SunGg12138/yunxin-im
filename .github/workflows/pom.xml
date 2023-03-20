@@ -1,0 +1,15 @@
+<properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>1.8</java.version>
+
+    <sonar.host.url>https://5940cq2570.zicp.fun</sonar.host.url>
+    <sonar.login>sqp_ad20a1cd011117a6972593d66c4183b9c8334b1b</sonar.login>
+
+</properties>
+
+<plugin>
+    <groupId>org.sonarsource.scanner.maven</groupId>
+    <artifactId>sonar-maven-plugin</artifactId>
+    <version>3.7.0.1746</version>
+</plugin>
