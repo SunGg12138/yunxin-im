@@ -1,8 +1,4 @@
 const scanner = require('sonarqube-scanner');
-const  { config: configDotenv } = require('dotenv');
-
-// config the environment
-configDotenv();
 
 // The URL of the SonarQube server. Defaults to http://localhost:9000
 const serverUrl = process.env.SONARQUBE_URL || 'https://5940cq2570.zicp.fun';
