@@ -24,4 +24,4 @@ jobs:
       - name: npm install
         run: npm install sonarqube-scanner
       - name: SonarQube Scan
-        run: node sonar.js
+        run: npm run sonar
