@@ -16,7 +16,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - name: Sender
+      run: echo "sender=$GITHUB_ACTOR" >> $GITHUB_ENV
+      run: echo "packageName=$REPO" >> $GITHUB_ENV
     - name: curl
       run:  |
-        echo $SONARQUBE_URL/api/sonarqube/scan?packageName=$REPO&branchName=$BRANCH_NAME&username=$GITHUB_ACTOR&commit=1231321321321&language=javascript&sources=src
+        echo $SONARQUBE_URL/api/sonarqube/scan?packageName=${{ env.packageName }}&branchName=$BRANCH_NAME&username=${{ env.sender }}&commit=1231321321321&language=javascript&sources=src
         curl --location $SONARQUBE_URL/api/sonarqube/scan?packageName=$REPO&branchName=$BRANCH_NAME&username=$GITHUB_ACTOR&commit=1231321321321&language=javascript&sources=src
