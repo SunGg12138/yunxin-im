@@ -11,6 +11,7 @@ env: # 统一设置环境变量
   BRANCH_NAME: develop
   LAN: javascript
   SOURCES: src
+  REPO_URL: https://github.com/SunGg12138/yunxin-im.git
 
 name: SonarQube Scan
 jobs:
@@ -27,9 +28,10 @@ jobs:
         echo "baseUrl=$SONARQUBE_URL" >> $GITHUB_ENV
         echo "language=$LAN" >> $GITHUB_ENV
         echo "sources=$SOURCES" >> $GITHUB_ENV
+        echo "repoUrl=$REPO_URL" >> $GITHUB_ENV
     - name: full url
       run: |
-         echo "fullUrl=${{ env.baseUrl }}/api/sonarqube/scan?packageName=${{ env.packageName }}&branchName=${{ env.branchName }}&username=${{ env.sender }}&commit=${{ env.commitHash }}&language=${{ env.language }}&sources=${{ env.sources }}" >> $GITHUB_ENV
+         echo "fullUrl=${{ env.baseUrl }}/api/sonarqube/scan?packageName=${{ env.packageName }}&branchName=${{ env.branchName }}&username=${{ env.sender }}&commit=${{ env.commitHash }}&language=${{ env.language }}&sources=${{ env.sources }}&repoUrl=${{ env.repoUrl }}" >> $GITHUB_ENV
     - name: curl
       run:  |
         echo ${{ env.fullUrl }}
