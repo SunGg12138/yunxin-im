@@ -23,4 +23,5 @@ jobs:
         url: https://5940cq2570.zicp.fun/api/sonarqube/scan
         method: GET
         params: '{ "packageName": "${REPO}", "branchName": "${BRANCH_NAME}", "username": "${GITHUB_ACTOR}", "commit": "${GIT_HASH}", "language": "javascript", "sources": "src" }'
+        timeout: 60000
         
