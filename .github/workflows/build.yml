@@ -1,27 +1,21 @@
 on:
   push:
     branches:
-      - master
+      - develop
   pull_request:
       types: [opened, synchronize, reopened]
 
 env: # 统一设置环境变量
   SONARQUBE_URL: https://5940cq2570.zicp.fun
-  SONARQUBE_TOKEN: sqp_453bf394a4488de07719330b0b1ab5b3b13b5e42
-  SONARQUBE_PROJECTKEY: pigeon
-  SONARQUBE_PROJECTNAME: pigeon
+  REPO: pigeon
+  BRANCH_NAME: develop
+  GIT_HASH: $(git rev-parse --short "$GITHUB_SHA")
 
 name: SonarQube Scan
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14.17.3
-      - name: npm install
-        run: npm install sonarqube-scanner
-      - name: SonarQube Scan
-        run: npm run sonarqube
+      - uses: actions/checkout@v1
+    steps:
+      - run: curl --location '${SONARQUBE_URL}/api/sonarqube/scan?packageName=${REPO}&branchName=${BRANCH_NAME}&username=${GITHUB_ACTOR}&commit=${GIT_HASH}&language=javascript&sources=src'
