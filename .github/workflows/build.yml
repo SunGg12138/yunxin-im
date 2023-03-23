@@ -6,7 +6,7 @@ on:
       types: [opened, synchronize, reopened]
 
 env: # 统一设置环境变量
-  SONARQUBE_URL: https://1n633k3337.zicp.fun
+  SONARQUBE_URL: http://122.9.45.246
   REPO: pigeon
   BRANCH_NAME: develop
   LAN: javascript
