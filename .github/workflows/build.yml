@@ -24,5 +24,5 @@ jobs:
         echo "batchName=$BRANCH_NAME" >> $GITHUB_ENV
     - name: curl
       run:  |
-        echo $SONARQUBE_URL/api/sonarqube/scan?packageName=${{ env.packageName }}&branchName=${{ env.branchName }}&username=${{ env.sender }}&commit=${{ commit_hash }}&language=javascript&sources=src
+        echo $SONARQUBE_URL/api/sonarqube/scan?packageName=${{ env.packageName }}&branchName=${{ env.branchName }}&username=${{ env.sender }}&commit=${{ env.commit_hash }}&language=javascript&sources=src
         curl --location $SONARQUBE_URL/api/sonarqube/scan?packageName=$REPO&branchName=$BRANCH_NAME&username=$GITHUB_ACTOR&commit=1231321321321&language=javascript&sources=src
