@@ -9,7 +9,6 @@ env: # 统一设置环境变量
   SONARQUBE_URL: https://1n633k3337.zicp.fun
   REPO: pigeon
   BRANCH_NAME: develop
-  GIT_HASH: $(git rev-parse --short "$GITHUB_SHA")
 
 name: SonarQube Scan
 jobs:
@@ -19,5 +18,5 @@ jobs:
     - uses: actions/checkout@v3
     - name: curl
       run:  |
-        echo $SONARQUBE_URL/api/sonarqube/scan?packageName=${{ REPO }}&branchName=${{ BRANCH_NAME }}&username=${{ GITHUB_ACTOR }}&commit=${{ GIT_HASH }}&language=javascript&sources=src
-        curl --location $SONARQUBE_URL/api/sonarqube/scan?packageName=$REPO&branchName=$BRANCH_NAME&username=$GITHUB_ACTOR&commit=$GIT_HASH&language=javascript&sources=src
+        echo $SONARQUBE_URL/api/sonarqube/scan?packageName=$REPO&branchName=$BRANCH_NAME&username=$GITHUB_ACTOR&commit=1231321321321&language=javascript&sources=src
+        curl --location $SONARQUBE_URL/api/sonarqube/scan?packageName=$REPO&branchName=$BRANCH_NAME&username=$GITHUB_ACTOR&commit=1231321321321&language=javascript&sources=src
