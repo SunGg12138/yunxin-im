@@ -33,4 +33,4 @@ jobs:
     - name: curl
       run:  |
         echo ${{ env.fullUrl }}
-        curl -X GET ${{ env.fullUrl }}
+        curl --location "${{ env.fullUrl }}"
