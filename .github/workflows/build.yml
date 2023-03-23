@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: params
+    - name: params2
       run: |
         echo "sender=$GITHUB_ACTOR" >> $GITHUB_ENV
         echo "commitHash=$GITHUB_SHA" >> $GITHUB_ENV
