@@ -16,7 +16,7 @@ jobs:
   curl:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v3
     - name: curl
       uses: indiesdev/curl@v1.1
       with: 
