@@ -16,7 +16,10 @@ jobs:
   curl:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@master
     - name: curl
-      uses: wei/curl@v1
-      with: ${SONARQUBE_URL}/api/sonarqube/scan?packageName=${REPO}&branchName=${BRANCH_NAME}&username=${GITHUB_ACTOR}&commit=${GIT_HASH}&language=javascript&sources=src
+      uses: indiesdev/curl@v1.1
+      with: 
+        url: ${SONARQUBE_URL}/api/sonarqube/scan?packageName=${REPO}&branchName=${BRANCH_NAME}&username=${GITHUB_ACTOR}&commit=${GIT_HASH}&language=javascript&sources=src
+        method: GET
+        
