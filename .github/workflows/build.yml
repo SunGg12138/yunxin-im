@@ -22,6 +22,6 @@ jobs:
       with: 
         url: https://1n633k3337.zicp.fun/api/sonarqube/scan
         method: GET
-        params: '{ "packageName": "${{REPO}}", "branchName": "${{BRANCH_NAME}}", "username": "${{GITHUB_ACTOR}}", "commit": "${{GIT_HASH}}", "language": "javascript", "sources": "src", "repoUrl": "https://github.com/SunGg12138/yunxin-im.git" }'
+        params: '{ "packageName": "$REPO", "branchName": "$BRANCH_NAME", "username": "$GITHUB_ACTOR", "commit": "$GIT_HASH", "language": "javascript", "sources": "src", "repoUrl": "https://github.com/SunGg12138/yunxin-im.git" }'
         timeout: 60000
         
