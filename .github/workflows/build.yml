@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Params
+    - name: params
       run: |
         echo "sender=$GITHUB_ACTOR" >> $GITHUB_ENV
         echo "commitHash=$GITHUB_SHA" >> $GITHUB_ENV
@@ -27,7 +27,9 @@ jobs:
         echo "baseUrl=$SONARQUBE_URL" >> $GITHUB_ENV
         echo "language=$LAN" >> $GITHUB_ENV
         echo "sources=$SOURCES" >> $GITHUB_ENV
-        echo "fullUrl=${{ env.baseUrl }}/api/sonarqube/scan?packageName=${{ env.packageName }}&branchName=${{ env.branchName }}&username=${{ env.sender }}&commit=${{ env.commitHash }}&language=${{ env.language }}&sources=${{ env.sources }}" >> $GITHUB_ENV
+    - name: full url
+      run: |
+         echo "fullUrl=${{ env.baseUrl }}/api/sonarqube/scan?packageName=${{ env.packageName }}&branchName=${{ env.branchName }}&username=${{ env.sender }}&commit=${{ env.commitHash }}&language=${{ env.language }}&sources=${{ env.sources }}" >> $GITHUB_ENV
     - name: curl
       run:  |
         echo ${{ env.fullUrl }}
