@@ -9,7 +9,7 @@ env: # 统一设置环境变量
   SONARQUBE_URL: https://1n633k3337.zicp.fun
   REPO: pigeon
   BRANCH_NAME: develop
-  LAN: language
+  LAN: javascript
   SOURCES: src
 
 name: SonarQube Scan
@@ -21,13 +21,14 @@ jobs:
     - name: Params
       run: |
         echo "sender=$GITHUB_ACTOR" >> $GITHUB_ENV
-        echo "commit_hash=$GITHUB_SHA" >> $GITHUB_ENV
+        echo "commitHash=$GITHUB_SHA" >> $GITHUB_ENV
         echo "packageName=$REPO" >> $GITHUB_ENV
         echo "branchName=$BRANCH_NAME" >> $GITHUB_ENV
         echo "baseUrl=$SONARQUBE_URL" >> $GITHUB_ENV
         echo "language=$LAN" >> $GITHUB_ENV
         echo "sources=$SOURCES" >> $GITHUB_ENV
+        echo "fullUrl=${{ env.baseUrl }}/api/sonarqube/scan?packageName=${{ env.packageName }}&branchName=${{ env.branchName }}&username=${{ env.sender }}&commit=${{ env.commitHash }}&language=${{ env.language }}&sources=${{ env.sources }}" >> $GITHUB_ENV
     - name: curl
       run:  |
-        echo ${{ env.baseUrl }}/api/sonarqube/scan?packageName=${{ env.packageName }}&branchName=${{ env.branchName }}&username=${{ env.sender }}&commit=${{ env.commit_hash }}&language=${{ env.language }}&sources=${{ env.sources }}
-        curl -X GET ${{ env.baseUrl }}/api/sonarqube/scan?packageName=${{ env.packageName }}&branchName=${{ env.branchName }}&username=${{ env.sender }}&commit=${{ env.commit_hash }}&language=${{ env.language }}&sources=${{ env.sources }}
+        echo ${{ env.fullUrl }}
+        curl -X GET ${{ env.fullUrl }}
