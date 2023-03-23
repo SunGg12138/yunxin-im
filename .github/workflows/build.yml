@@ -18,6 +18,7 @@ jobs:
     - uses: actions/checkout@v3
     - name: Sender
       run: echo "sender=$GITHUB_ACTOR" >> $GITHUB_ENV
+    - name: PackageName
       run: echo "packageName=$REPO" >> $GITHUB_ENV
     - name: curl
       run:  |
