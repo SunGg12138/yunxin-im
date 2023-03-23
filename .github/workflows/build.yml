@@ -6,7 +6,7 @@ on:
       types: [opened, synchronize, reopened]
 
 env: # 统一设置环境变量
-  SONARQUBE_URL: https://1n633k3337.zicp.fun/
+  SONARQUBE_URL: https://1n633k3337.zicp.fun
   REPO: pigeon
   BRANCH_NAME: develop
   GIT_HASH: $(git rev-parse --short "$GITHUB_SHA")
