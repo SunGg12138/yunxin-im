@@ -13,9 +13,12 @@ env: # 统一设置环境变量
 
 name: SonarQube Scan
 jobs:
-  build:
+  curl:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+    - uses: actions/checkout@v1
     steps:
-      - run: curl --location '${SONARQUBE_URL}/api/sonarqube/scan?packageName=${REPO}&branchName=${BRANCH_NAME}&username=${GITHUB_ACTOR}&commit=${GIT_HASH}&language=javascript&sources=src'
+    - uses: actions/checkout@master
+    - name: curl
+      uses: wei/curl@v1
+      with: --location '${SONARQUBE_URL}/api/sonarqube/scan?packageName=${REPO}&branchName=${BRANCH_NAME}&username=${GITHUB_ACTOR}&commit=${GIT_HASH}&language=javascript&sources=src'
