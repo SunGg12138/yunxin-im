@@ -27,9 +27,15 @@ jobs:
         echo "language=$LAN" >> $GITHUB_ENV
         echo "sources=$SOURCES" >> $GITHUB_ENV
         echo "repoUrl=$REPO_URL" >> $GITHUB_ENV
+        echo "repo=$GITHUB_REPOSITORY" >> $GITHUB_ENV
+        echo "repoid=$GITHUB_REPOSITORY_ID" >> $GITHUB_ENV
+        echo "repoOwner=$GITHUB_REPOSITORY_OWNER" >> $GITHUB_ENV
     - name: full url
       run: |
-         echo "fullUrl=${{ env.baseUrl }}/api/sonarqube/scan?packageName=${{ env.packageName }}&actor=${{ env.sender }}&commitSha=${{ env.commitHash }}&language=${{ env.language }}&sources=${{ env.sources }}&repoUrl=${{ env.repoUrl }}&from=github" >> $GITHUB_ENV
+        echo "${{ env.repo }}"
+        echo "${{ env.repoid }}"
+        echo "${{ env.repoOwner }}"
+        echo "fullUrl=${{ env.baseUrl }}/api/sonarqube/scan?packageName=${{ env.packageName }}&actor=${{ env.sender }}&commitSha=${{ env.commitHash }}&language=${{ env.language }}&sources=${{ env.sources }}&repoUrl=${{ env.repoUrl }}&from=github" >> $GITHUB_ENV
     - name: curl
       run:  |
         echo ${{ env.fullUrl }}
