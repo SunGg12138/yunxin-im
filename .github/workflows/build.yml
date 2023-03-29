@@ -6,7 +6,7 @@ on:
       types: [opened, synchronize, reopened]
 
 env: # 统一设置环境变量
-  SONARQUBE_URL: http://122.9.45.246
+  SONARQUBE_URL: http://122.9.45.246:3000
   REPO: pigeon
   LAN: javascript
   SOURCES: src
