@@ -6,12 +6,12 @@ on:
       types: [opened, synchronize, reopened]
 
 env: # 统一设置环境变量
-  SONARQUBE_URL: http://122.9.45.246:3000
+  SONARQUBE_URL: https://1n633k3337.zicp.fun
   REPO: pigeon-test
   LAN: javascript
   SOURCES: src
 
-name: SonarQube Scanxx
+name: SonarQube Scan
 jobs:
   curl:
     runs-on: ubuntu-latest
