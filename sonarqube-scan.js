@@ -26,7 +26,7 @@ const sonarScanner = async () => {
   console.log(serverUrl);
 
   if (!serverUrl) {
-    console.log('SonarQube url not set. Nothing to do...');
+    console.log('SonarQube url not set. Nothing to do......');
     return;
   }
 
