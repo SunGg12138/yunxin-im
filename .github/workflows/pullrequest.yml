@@ -16,13 +16,8 @@ jobs:
     - name: params
       run: |
         echo "sender=$GITHUB_ACTOR" >> $GITHUB_ENV
-        echo "commitHash=$GITHUB_SHA" >> $GITHUB_ENV
-        echo "packageName=$REPO" >> $GITHUB_ENV
         echo "webhook=$WEBHOOK" >> $GITHUB_ENV
         echo "repo=$GITHUB_REPOSITORY" >> $GITHUB_ENV
-    - name: full url
-      run: |
-        echo "${{ env.repo }}"
     - name: curl
       run:  |
-        curl --location '${{env.webhook}}' --header 'Content-Type: application/json' --data '{"msg_type":"interactive","card":{"type":"template","data":{"template_id":"ctp_AArtbiseKiiY","template_variable":{"commitSha":"1111","startCommitSha":"1111","jump_url":"1111","new_bugs":"1111","new_vulnerabilities":"1111","new_security_hotspots":"1111","new_code_smells":"1111","new_bugs_color":"green","new_vulnerabilities_color":"green","new_security_hotspots_color":"green","new_code_smells_color":"green"}}}}'
+        curl --location '${{env.WEBHOOK}}' --header 'Content-Type: application/json' --data '{"msg_type":"interactive","card":{"type":"template","data":{"template_id":"ctp_AArtbiseKiiY","template_variable":{"commitSha":"${{env.repo}}","startCommitSha":"${{env.sender}}","jump_url":"1111","new_bugs":"1111","new_vulnerabilities":"1111","new_security_hotspots":"1111","new_code_smells":"1111","new_bugs_color":"green","new_vulnerabilities_color":"green","new_security_hotspots_color":"green","new_code_smells_color":"green"}}}}'
