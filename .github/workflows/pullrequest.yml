@@ -17,7 +17,7 @@ jobs:
       run: |
         echo "sender=$GITHUB_ACTOR" >> $GITHUB_ENV
         echo "webhook=$WEBHOOK" >> $GITHUB_ENV
-        echo "repo=${GITHUB_REPOSITORY##*/}" >> $GITHUB_ENV
+        echo "repo=$GITHUB_REPOSITORY" >> $GITHUB_ENV
     - name: curl
       run:  |
-      curl --location '${{env.WEBHOOK}}' --header 'Content-Type: application/json' --data '{"msg_type":"interactive","card":{"type":"template","data":{"template_id":"ctp_AAm2sd6ncekB","template_variable":{"repo":"${env.repo}","headBranch":"${{ github.event.pull_request.head.ref }}","actor":"${{github.actor}}"}}}}'
+        curl --location '${{env.WEBHOOK}}' --header 'Content-Type: application/json' --data '{"msg_type":"interactive","card":{"type":"template","data":{"template_id":"ctp_AAm2sd6ncekB","template_variable":{"repo":"${{env.repo}}","headBranch":"${{github.event.pull_request.head.ref}}","actor":"${{github.actor}}"}}}}'
