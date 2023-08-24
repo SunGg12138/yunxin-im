@@ -2,12 +2,11 @@ on:
   pull_request:
     branches:    
       - develop
-      - master
 
 env: # 统一设置环境变量
   WEBHOOK: https://open.feishu.cn/open-apis/bot/v2/hook/5e72d42e-833f-484d-b3c0-433b02e9f417
 
-name: Pull-Request 
+name: Pull Request Event
 jobs:
   curl:
     runs-on: ubuntu-latest
@@ -20,4 +19,4 @@ jobs:
         echo "repo=${GITHUB_REPOSITORY##*/}" >> $GITHUB_ENV
     - name: curl
       run:  |
-        curl --location '${{env.WEBHOOK}}' --header 'Content-Type: application/json' --data '{"msg_type":"interactive","card":{"type":"template","data":{"template_id":"ctp_AAm2sd6ncekB","template_variable":{"repo":"${{env.repo}}","headBranch":"${{github.event.pull_request.head.ref}}","actor":"${{github.actor}}"}}}}'
+        curl --location '${{env.WEBHOOK}}' --header 'Content-Type: application/json' --data '{"msg_type":"interactive","card":{"type":"template","data":{"template_id":"ctp_AAm2sd6ncekB","template_variable":{"repo":"${{env.repo}}","headBranch":"${{github.event.pull_request.head.ref}}","actor":"${{github.actor}}","jump_url":"${{ github.event.pull_request.html_url }}"}}}}'
