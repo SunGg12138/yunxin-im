@@ -3,13 +3,9 @@ on:
     branches:    
       - master
       - develop
+    types: [opened, reopened]
   pull_request_review:
-    branches:    
-      - master
-      - develop
-    types:
-      - submitted
-      - dismissed
+    types: [submitted, dismissed]
 
 env: # 统一设置环境变量
   WEBHOOK: https://open.feishu.cn/open-apis/bot/v2/hook/bfba47d7-7368-43f1-b339-a4aad6a6fbfc
