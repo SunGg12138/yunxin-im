@@ -1,0 +1,34 @@
+on: 
+  pull_request:
+    branches:    
+      - master
+      - develop
+  pull_request_review:
+    types:
+      - submitted
+
+env: # 统一设置环境变量
+  WEBHOOK: https://open.feishu.cn/open-apis/bot/v2/hook/bfba47d7-7368-43f1-b339-a4aad6a6fbfc
+  WEBHOOK2: https://open.feishu.cn/open-apis/bot/v2/hook/7d45fa33-ad80-4443-b488-2446d9872583
+
+name: Pull Request Event
+jobs:
+  curl:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: params
+      run: |
+        echo "sender=$GITHUB_ACTOR" >> $GITHUB_ENV
+        echo "webhook=$WEBHOOK" >> $GITHUB_ENV
+        echo "repo=${GITHUB_REPOSITORY##*/}" >> $GITHUB_ENV
+    - name: curl
+      run:  |
+        if [ "${{ github.event_name }}" == "pull_request" ]; then
+          for WEBHOOK in $WEBHOOK $WEBHOOK2; do
+            echo "pull_request: $WEBHOOK"
+          done
+        else
+          echo "pull_request_review: ${{ github.event.review.state }}"
+        fi
+        
