@@ -31,4 +31,3 @@ jobs:
         else
           echo "pull_request_review: ${{ github.event.review.state }}"
         fi
-        
