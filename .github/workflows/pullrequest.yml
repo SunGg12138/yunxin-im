@@ -1,11 +1,12 @@
 on: 
   pull_request:
     branches:    
+      - master
       - develop
 
 env: # 统一设置环境变量
   WEBHOOK: https://open.feishu.cn/open-apis/bot/v2/hook/bfba47d7-7368-43f1-b339-a4aad6a6fbfc
-  WEBHOOK2: https://open.feishu.cn/open-apis/bot/v2/hook/bfba47d7-7368-43f1-b339-a4aad6a6fbfc
+  WEBHOOK2: https://open.feishu.cn/open-apis/bot/v2/hook/7d45fa33-ad80-4443-b488-2446d9872583
 
 name: Pull Request Event
 jobs:
