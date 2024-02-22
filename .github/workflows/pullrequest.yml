@@ -24,5 +24,11 @@ jobs:
         echo "repo=${GITHUB_REPOSITORY##*/}" >> $GITHUB_ENV
     - name: curl
       run:  |
-        echo "Environment variable: ${{ github.event_name }}"
+        if [ "${{ github.event_name }}" == "pull_request" ]; then
+          for WEBHOOK in $WEBHOOK $WEBHOOK2; do
+            echo "pull_request: $WEBHOOK"
+          done
+        else
+          echo "pull_request_review: ${{ github.event.review.state }}"
+        fi
         
