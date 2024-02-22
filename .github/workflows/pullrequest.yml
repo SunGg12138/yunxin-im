@@ -25,18 +25,17 @@ jobs:
           echo "Pull Request Action: ${{ github.event.action }}"
           if [ "${{ github.event.action }}" == "closed" ]; then
             for WEBHOOK in $WEBHOOK $WEBHOOK2; do
-              curl --location --header 'Content-Type: application/json' --data '{"msg_type":"interactive","card":{"type":"template","data":{"template_id":"ctp_AA1R1b8vHl2q","template_variable":{"repo":"${{env.repo}}","headBranch":"${{github.event.pull_request.head.ref}}","actor":"${{github.actor}}","jump_url":"${{ github.event.pull_request.html_url }}","baseBranch":"${{github.event.pull_request.base.ref}}"}}}}' $WEBHOOK
+              curl --location --header 'Content-Type: application/json' --data '{"msg_type":"interactive","card":{"type":"template","data":{"template_id":"ctp_AA1R1b8vHl2q","template_variable":{"repo":"${{env.repo}}","headBranch":"${{github.event.pull_request.head.ref}}","actor":"${{github.event.pull_request.user.login}}","jump_url":"${{ github.event.pull_request.html_url }}","baseBranch":"${{github.event.pull_request.base.ref}}"}}}}' $WEBHOOK
             done
           else
             for WEBHOOK in $WEBHOOK $WEBHOOK2; do
-              curl --location --header 'Content-Type: application/json' --data '{"msg_type":"interactive","card":{"type":"template","data":{"template_id":"ctp_AA14YlhE5N0u","template_variable":{"repo":"${{env.repo}}","headBranch":"${{github.event.pull_request.head.ref}}","actor":"${{github.actor}}","jump_url":"${{ github.event.pull_request.html_url }}","baseBranch":"${{github.event.pull_request.base.ref}}"}}}}' $WEBHOOK
+              curl --location --header 'Content-Type: application/json' --data '{"msg_type":"interactive","card":{"type":"template","data":{"template_id":"ctp_AA14YlhE5N0u","template_variable":{"repo":"${{env.repo}}","headBranch":"${{github.event.pull_request.head.ref}}","actor":"${{github.event.pull_request.user.login}}","jump_url":"${{ github.event.pull_request.html_url }}","baseBranch":"${{github.event.pull_request.base.ref}}"}}}}' $WEBHOOK
             done
           fi
         else
           if [ "${{ github.event.review.state }}" == "approved" ]; then
             for WEBHOOK in $WEBHOOK $WEBHOOK2; do
-              curl --location --header 'Content-Type: application/json' --data '{"msg_type":"interactive","card":{"type":"template","data":{"template_id":"ctp_AA14jtBsjQrf","template_variable":{"repo":"${{env.repo}}","headBranch":"${{github.event.pull_request.head.ref}}","actor":"${{github.actor}}","jump_url":"${{ github.event.pull_request.html_url }}","approver":"${{github.event.review.user.login}}","baseBranch":"${{github.event.pull_request.base.ref}}"}}}}' $WEBHOOK
+              curl --location --header 'Content-Type: application/json' --data '{"msg_type":"interactive","card":{"type":"template","data":{"template_id":"ctp_AA14jtBsjQrf","template_variable":{"repo":"${{env.repo}}","headBranch":"${{github.event.pull_request.head.ref}}","actor":"${{github.event.pull_request.user.login}}","jump_url":"${{ github.event.pull_request.html_url }}","approver":"${{github.event.review.user.login}}","baseBranch":"${{github.event.pull_request.base.ref}}"}}}}' $WEBHOOK
             done
           fi
-          echo "pull_request_review: ${{ github.event.review.state }}"
         fi
