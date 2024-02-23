@@ -24,9 +24,15 @@ jobs:
         if [ "${{ github.event_name }}" == "pull_request" ]; then
           echo "Pull Request Action: ${{ github.event.action }}"
           if [ "${{ github.event.action }}" == "closed" ]; then
-            for WEBHOOK in $WEBHOOK $WEBHOOK2; do
-              curl --location --header 'Content-Type: application/json' --data '{"msg_type":"interactive","card":{"type":"template","data":{"template_id":"ctp_AA1R1b8vHl2q","template_variable":{"repo":"${{env.repo}}","headBranch":"${{github.event.pull_request.head.ref}}","actor":"${{github.event.pull_request.user.login}}","jump_url":"${{ github.event.pull_request.html_url }}","baseBranch":"${{github.event.pull_request.base.ref}}"}}}}' $WEBHOOK
-            done
+            if [[ "${{ github.event.pull_request.merged }}" == "true" ]]; then
+              for WEBHOOK in $WEBHOOK $WEBHOOK2; do
+                curl --location --header 'Content-Type: application/json' --data '{"msg_type":"interactive","card":{"type":"template","data":{"template_id":"ctp_AA1R1MytheUR","template_variable":{"repo":"${{env.repo}}","headBranch":"${{github.event.pull_request.head.ref}}","actor":"${{github.event.pull_request.user.login}}","jump_url":"${{ github.event.pull_request.html_url }}","baseBranch":"${{github.event.pull_request.base.ref}}"}}}}' $WEBHOOK
+              done
+            else
+              for WEBHOOK in $WEBHOOK $WEBHOOK2; do
+                curl --location --header 'Content-Type: application/json' --data '{"msg_type":"interactive","card":{"type":"template","data":{"template_id":"ctp_AA1R1b8vHl2q","template_variable":{"repo":"${{env.repo}}","headBranch":"${{github.event.pull_request.head.ref}}","actor":"${{github.event.pull_request.user.login}}","jump_url":"${{ github.event.pull_request.html_url }}","baseBranch":"${{github.event.pull_request.base.ref}}"}}}}' $WEBHOOK
+              done
+            fi
           else
             for WEBHOOK in $WEBHOOK $WEBHOOK2; do
               curl --location --header 'Content-Type: application/json' --data '{"msg_type":"interactive","card":{"type":"template","data":{"template_id":"ctp_AA14YlhE5N0u","template_variable":{"repo":"${{env.repo}}","headBranch":"${{github.event.pull_request.head.ref}}","actor":"${{github.event.pull_request.user.login}}","jump_url":"${{ github.event.pull_request.html_url }}","baseBranch":"${{github.event.pull_request.base.ref}}"}}}}' $WEBHOOK
